@@ -22,7 +22,7 @@ Base.iszero(::SymbNumber) = false
     tol1 = eps(1.0)
 
     @test Taylor1 <: AbstractSeries
-    @test Taylor1{Float64} <: AbstractSeries{Float64}
+    @test Taylor1{Float64} <: AbstractSeries
 
     @test Taylor1([1,2,3,4,5], 2) == Taylor1([1,2,3])
     @test get_order(Taylor1([1,2,3,4,5], 2)) == 2

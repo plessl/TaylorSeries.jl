@@ -9,8 +9,8 @@ eeuler = Base.MathConstants.e
 
 @testset "Tests for HomogeneousPolynomial and TaylorN" begin
     @test HomogeneousPolynomial <: AbstractSeries
-    @test HomogeneousPolynomial{Int} <: AbstractSeries{Int}
-    @test TaylorN{Float64} <: AbstractSeries{Float64}
+    @test HomogeneousPolynomial{Int} <: AbstractSeries
+    @test TaylorN{Float64} <: AbstractSeries
 
     set_variables("x", numvars=2, order=6)
     _taylorNparams = TaylorSeries.ParamsTaylorN(6, 2, String["x₁", "x₂"])

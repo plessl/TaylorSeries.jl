@@ -7,19 +7,19 @@
 #
 
 """
-    AbstractSeries{T<:Number} <: Number
+    AbstractSeries <: Number
 
 Parameterized abstract type for [`Taylor1`](@ref),
 [`HomogeneousPolynomial`](@ref) and [`TaylorN`](@ref).
 """
-abstract type AbstractSeries{T<:Number} <: Number end
+abstract type AbstractSeries <: Number end
 
 
 ## Constructors ##
 
 ######################### Taylor1
 """
-    Taylor1{T<:Number} <: AbstractSeries{T}
+    Taylor1{T<:Number} <: AbstractSeries
 
 DataType for polynomial expansions in one independent variable.
 
@@ -32,7 +32,7 @@ DataType for polynomial expansions in one independent variable.
 Note that `Taylor1` variables are callable. For more information, see
 [`evaluate`](@ref).
 """
-struct Taylor1{T<:Number} <: AbstractSeries{T}
+struct Taylor1{T<:Number} <: AbstractSeries
     coeffs :: Array{T,1}
     order :: Int
 
@@ -74,7 +74,7 @@ Taylor1(order::Int) = Taylor1(Float64, order)
 
 ######################### HomogeneousPolynomial
 """
-    HomogeneousPolynomial{T<:Number} <: AbstractSeries{T}
+    HomogeneousPolynomial{T<:Number} <: AbstractSeries
 
 DataType for homogenous polynomials in many (>1) independent variables.
 
@@ -88,7 +88,7 @@ of the independent variables are specified by `coeff_table[order+1][i]`.
 Note that `HomogeneousPolynomial` variables are callable. For more information,
 see [`evaluate`](@ref).
 """
-struct HomogeneousPolynomial{T<:Number} <: AbstractSeries{T}
+struct HomogeneousPolynomial{T<:Number} <: AbstractSeries
     coeffs  :: Array{T,1}
     order   :: Int
 
@@ -133,7 +133,7 @@ HomogeneousPolynomial(nv::Int) = HomogeneousPolynomial(Float64, nv)
 
 ######################### TaylorN
 """
-    TaylorN{T<:Number} <: AbstractSeries{T}
+    TaylorN{T<:Number} <: AbstractSeries
 
 DataType for polynomial expansions in many (>1) independent variables.
 
@@ -147,7 +147,7 @@ homogeneous polynomial of degree ``i-1``.
 Note that `TaylorN` variables are callable. For more information, see
 [`evaluate`](@ref).
 """
-struct TaylorN{T<:Number} <: AbstractSeries{T}
+struct TaylorN{T<:Number} <: AbstractSeries
     coeffs  :: Array{HomogeneousPolynomial{T},1}
     order   :: Int
 
